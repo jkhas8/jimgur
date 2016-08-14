@@ -3,6 +3,12 @@ require "faraday"
 module Jimgur
   class << self
     attr_accessor :configuration
+
+    API_URI = URI.parse("https://api.imgur.com")
+    API_PUBLIC_KEY = "Client-id #{configuration.client_id}"
+    ENDPOINTS = {
+      image: "3/image",
+    }
   end
 
   def self.configure
@@ -19,11 +25,6 @@ module Jimgur
   end
 
   def self.upload image
-    api_uri = URI.parse("https://api.imgur.com")
-    api_public_key = "Client-ID #{self.configuration.client_id}"
-    endpoints = {
-      image: "3/image",
-    }
     img_name = image.tempfile
     img = File.open(img_name, "r") {|io| io.read}
 
