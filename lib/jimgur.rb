@@ -5,7 +5,7 @@ module Jimgur
     attr_accessor :configuration
 
     API_URI = URI.parse("https://api.imgur.com")
-    API_PUBLIC_KEY = "Client-id #{configuration.client_id}"
+    API_PUBLIC_KEY = "Client-id #{self.configuration.client_id}"
     ENDPOINTS = {
       image: "3/image",
     }
